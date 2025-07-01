@@ -10,21 +10,35 @@
   
   <url>
     <loc>http://helong0102.github.io/</loc>
-    <lastmod>2024-12-27T01:37:56+13:00</lastmod>
+    <lastmod>2025-07-01T01:37:56+14:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>http://helong0102.github.io/categories/</loc>
-    <lastmod>2024-12-27T01:37:56+13:00</lastmod>
+    <lastmod>2025-07-01T01:37:56+14:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://helong0102.github.io/categories/git/</loc>
+    <lastmod>2025-07-01T01:37:56+14:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://helong0102.github.io/post/git-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E5%A4%A7%E5%85%A8/</loc>
+    <lastmod>2025-07-01T01:37:56+14:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>http://helong0102.github.io/post/</loc>
-    <lastmod>2024-12-27T01:37:56+13:00</lastmod>
+    <lastmod>2025-07-01T01:37:56+14:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -60,13 +74,6 @@
   <url>
     <loc>http://helong0102.github.io/post/ubuntu%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D%E5%92%8C%E7%94%A8%E6%88%B7%E5%90%8D/</loc>
     <lastmod>2024-09-18T01:37:56+13:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://helong0102.github.io/categories/git/</loc>
-    <lastmod>2024-09-05T01:37:56+13:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
