@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>markdown on ✦ 个人记录 ✧ 𝑳𝒐𝒏𝒈 𝑯𝒆 ✦</title>
+    <link>http://helong0102.github.io/categories/markdown/</link>
+    <description>Recent content in markdown on ✦ 个人记录 ✧ 𝑳𝒐𝒏𝒈 𝑯𝒆 ✦</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Aug 2025 01:37:56 +1000</lastBuildDate><atom:link href="http://helong0102.github.io/categories/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markdown 语法总结与常用模板</title>
+      <link>http://helong0102.github.io/post/markdown-%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8E%E5%B8%B8%E7%94%A8%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Sat, 02 Aug 2025 01:37:56 +1000</pubDate>
+      
+      <guid>http://helong0102.github.io/post/markdown-%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8E%E5%B8%B8%E7%94%A8%E6%A8%A1%E6%9D%BF/</guid>
+      <description>Markdown 语法总结与常用模板 1. 标题 使用 # 表示标题层级： 1 2 3 # 一级标题 ## 二级标题 ### 三级标题 2. 段落与换行 段落之间空一行。 行末加两个空格可以强制换行。 3.</description>
+    </item>
+    
+  </channel>
+</rss>
