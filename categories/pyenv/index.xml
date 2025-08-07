@@ -6,7 +6,16 @@
     <description>Recent content in pyenv on ✦ 个人记录 ✧ 𝑳𝒐𝒏𝒈 𝑯𝒆 ✦</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Apr 2023 01:37:56 +1300</lastBuildDate><atom:link href="http://helong0102.github.io/categories/pyenv/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Aug 2025 01:37:56 +1000</lastBuildDate><atom:link href="http://helong0102.github.io/categories/pyenv/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python 升级和虚环境配置</title>
+      <link>http://helong0102.github.io/post/python-%E5%8D%87%E7%BA%A7%E5%92%8C%E8%99%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 07 Aug 2025 01:37:56 +1000</pubDate>
+      
+      <guid>http://helong0102.github.io/post/python-%E5%8D%87%E7%BA%A7%E5%92%8C%E8%99%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description>python 升级和虚环境配置 1. Ubuntu 下 Python 版本升级 用 deadsnakes PPA 安装新 Python 1 2 3 4 5 sudo apt update sudo apt install software-properties-common -y sudo add-apt-repository ppa:deadsnakes/ppa -y sudo apt update sudo apt install python3.10 python3.10-venv python3.10-dev -y 2. Python虚环境配置 1 2 3 4 5 sudo apt</description>
+    </item>
+    
     <item>
       <title>Python虚环境的搭建及基本使用</title>
       <link>http://helong0102.github.io/post/python%E8%99%9A%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link>
