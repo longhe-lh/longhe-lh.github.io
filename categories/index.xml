@@ -6,7 +6,16 @@
     <description>Recent content in Categories on ✦ 个人记录 ✧ 𝑳𝒐𝒏𝒈 𝑯𝒆 ✦</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 Aug 2025 01:37:56 +1000</lastBuildDate><atom:link href="http://helong0102.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Mar 2026 01:37:56 +1300</lastBuildDate><atom:link href="http://helong0102.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>test</title>
+      <link>http://helong0102.github.io/categories/test/</link>
+      <pubDate>Mon, 02 Mar 2026 01:37:56 +1300</pubDate>
+      
+      <guid>http://helong0102.github.io/categories/test/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>git</title>
       <link>http://helong0102.github.io/categories/git/</link>
