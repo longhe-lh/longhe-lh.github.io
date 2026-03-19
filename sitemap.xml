@@ -10,27 +10,41 @@
   
   <url>
     <loc>http://helong0102.github.io/</loc>
-    <lastmod>2026-03-02T01:37:56+13:00</lastmod>
+    <lastmod>2026-03-19T01:37:56+22:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://helong0102.github.io/categories/agent/</loc>
+    <lastmod>2026-03-19T01:37:56+22:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>http://helong0102.github.io/categories/</loc>
-    <lastmod>2026-03-02T01:37:56+13:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://helong0102.github.io/categories/linux/</loc>
-    <lastmod>2026-03-02T01:37:56+13:00</lastmod>
+    <lastmod>2026-03-19T01:37:56+22:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>http://helong0102.github.io/post/</loc>
+    <lastmod>2026-03-19T01:37:56+22:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://helong0102.github.io/post/%E5%9C%A8-cursor-%E4%B8%AD%E4%BD%BF%E7%94%A8-openskills-&#43;-obsidian-skills/</loc>
+    <lastmod>2026-03-19T01:37:56+22:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://helong0102.github.io/categories/linux/</loc>
     <lastmod>2026-03-02T01:37:56+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
