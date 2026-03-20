@@ -6,7 +6,7 @@
     <description>Recent content on ✦ 个人记录 ✧ 𝑳𝒐𝒏𝒈 𝑯𝒆 ✦</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Mar 2026 01:37:56 +2100</lastBuildDate><atom:link href="http://helong0102.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Mar 2026 01:37:56 +2100</lastBuildDate><atom:link href="http://helong0102.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于</title>
       <link>http://helong0102.github.io/about/</link>
@@ -14,6 +14,15 @@
       
       <guid>http://helong0102.github.io/about/</guid>
       <description>关于 本博客主要用于记录学习与科研心得， 分享区块链领域研究进展与个人思考。</description>
+    </item>
+    
+    <item>
+      <title>📄MinerU：PDF 转 Markdown 使用说明</title>
+      <link>http://helong0102.github.io/post/minerupdf-%E8%BD%AC-markdown-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
+      <pubDate>Fri, 20 Mar 2026 01:37:56 +2100</pubDate>
+      
+      <guid>http://helong0102.github.io/post/minerupdf-%E8%BD%AC-markdown-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</guid>
+      <description>📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），包括单文件转换和批量转换两种场景。 🧩 一、环境</description>
     </item>
     
     <item>

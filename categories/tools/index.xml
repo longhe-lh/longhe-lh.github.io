@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tools on ✦ 个人记录 ✧ 𝑳𝒐𝒏𝒈 𝑯𝒆 ✦</title>
+    <link>http://helong0102.github.io/categories/tools/</link>
+    <description>Recent content in tools on ✦ 个人记录 ✧ 𝑳𝒐𝒏𝒈 𝑯𝒆 ✦</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Mar 2026 01:37:56 +2100</lastBuildDate><atom:link href="http://helong0102.github.io/categories/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>📄MinerU：PDF 转 Markdown 使用说明</title>
+      <link>http://helong0102.github.io/post/minerupdf-%E8%BD%AC-markdown-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
+      <pubDate>Fri, 20 Mar 2026 01:37:56 +2100</pubDate>
+      
+      <guid>http://helong0102.github.io/post/minerupdf-%E8%BD%AC-markdown-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</guid>
+      <description>📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），包括单文件转换和批量转换两种场景。 🧩 一、环境</description>
+    </item>
+    
+  </channel>
+</rss>
