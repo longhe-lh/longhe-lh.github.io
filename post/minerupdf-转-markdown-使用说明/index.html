@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Long He" /><meta name="description" content="📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），包括单文件转换和批量转换两种场景。 🧩 一、环境" />
+<meta name="author" content="Long He" /><meta name="description" content="📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），涵盖**单文件转换、批量转换以及性能优化（加" />
 
 
 
@@ -40,19 +40,19 @@
 
 
 <meta property="og:title" content="📄MinerU：PDF 转 Markdown 使用说明" />
-<meta property="og:description" content="📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），包括单文件转换和批量转换两种场景。 🧩 一、环境" />
+<meta property="og:description" content="📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），涵盖**单文件转换、批量转换以及性能优化（加" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://helong0102.github.io/post/minerupdf-%E8%BD%AC-markdown-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2026-03-20T01:37:56+21:00" />
 <meta property="article:modified_time" content="2026-03-20T01:37:56+22:00" />
 
 <meta itemprop="name" content="📄MinerU：PDF 转 Markdown 使用说明">
-<meta itemprop="description" content="📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），包括单文件转换和批量转换两种场景。 🧩 一、环境"><meta itemprop="datePublished" content="2026-03-20T01:37:56+21:00" />
+<meta itemprop="description" content="📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），涵盖**单文件转换、批量转换以及性能优化（加"><meta itemprop="datePublished" content="2026-03-20T01:37:56+21:00" />
 <meta itemprop="dateModified" content="2026-03-20T01:37:56+22:00" />
-<meta itemprop="wordCount" content="803">
+<meta itemprop="wordCount" content="1335">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="📄MinerU：PDF 转 Markdown 使用说明"/>
-<meta name="twitter:description" content="📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），包括单文件转换和批量转换两种场景。 🧩 一、环境"/>
+<meta name="twitter:description" content="📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），涵盖**单文件转换、批量转换以及性能优化（加"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -158,43 +158,57 @@
         <li><a href="#-功能说明">📌 功能说明</a></li>
       </ul>
     </li>
-    <li><a href="#-五推荐参数强烈建议">⚡ 五、推荐参数（强烈建议）</a>
+    <li><a href="#-五加速与性能优化重点">⚡ 五、加速与性能优化（重点）</a>
       <ul>
-        <li><a href="#-使用-gpu-加速">✅ 使用 GPU 加速</a></li>
-        <li><a href="#-完整推荐命令">✅ 完整推荐命令</a></li>
-        <li><a href="#-参数说明">📌 参数说明</a></li>
+        <li><a href="#-1-gpu-加速强烈推荐">🚀 1. GPU 加速（强烈推荐）</a></li>
+        <li><a href="#-2-推荐高性能命令本地">🚀 2. 推荐高性能命令（本地）</a></li>
+        <li><a href="#-3-使用远程加速极致性能">🚀 3. 使用远程加速（极致性能）</a></li>
+        <li><a href="#-4-纯文本-pdf-极速模式">🚀 4. 纯文本 PDF 极速模式</a></li>
+        <li><a href="#-5-限制处理范围加速">🚀 5. 限制处理范围（加速）</a></li>
+        <li><a href="#-6-关闭不必要功能">🚀 6. 关闭不必要功能</a></li>
       </ul>
     </li>
-    <li><a href="#-六解析模式选择重要">🧠 六、解析模式选择（重要）</a></li>
-    <li><a href="#-七注意事项">⚠️ 七、注意事项</a>
+    <li><a href="#-六参数说明核心理解">📌 六、参数说明（核心理解）</a></li>
+    <li><a href="#-七解析模式选择重要">🧠 七、解析模式选择（重要）</a></li>
+    <li><a href="#-八常见误区重要">⚠️ 八、常见误区（重要）</a>
       <ul>
-        <li><a href="#-1-默认不只输出-markdown">❗ 1. 默认不只输出 Markdown</a></li>
-        <li><a href="#-2-空间路径需加引号">❗ 2. 空间路径需加引号</a></li>
+        <li><a href="#-1--b--cpu--gpu">❗ 1. <code>-b</code> ≠ CPU / GPU</a></li>
+        <li><a href="#-2-默认并不一定是最优">❗ 2. 默认并不一定是最优</a></li>
+        <li><a href="#-3-路径必须加引号windows">❗ 3. 路径必须加引号（Windows）</a></li>
       </ul>
     </li>
-    <li><a href="#-八结果验证">🔍 八、结果验证</a></li>
-    <li><a href="#-九常见问题">🧪 九、常见问题</a>
+    <li><a href="#-九结果验证">🔍 九、结果验证</a></li>
+    <li><a href="#-十常见问题">🧪 十、常见问题</a>
       <ul>
-        <li><a href="#-报错missing-option--p">❌ 报错：Missing option &lsquo;-p&rsquo;</a></li>
+        <li><a href="#-missing-option--p">❌ Missing option &lsquo;-p&rsquo;</a></li>
         <li><a href="#-gpu-未生效">❌ GPU 未生效</a></li>
+        <li><a href="#-速度慢">❌ 速度慢</a></li>
         <li><a href="#-子目录未处理">❌ 子目录未处理</a></li>
       </ul>
     </li>
-    <li><a href="#-十总结">🎯 十、总结</a></li>
+    <li><a href="#-十一总结推荐组合">🎯 十一、总结（推荐组合）</a>
+      <ul>
+        <li><a href="#-单文件最快">🚀 单文件最快</a></li>
+        <li><a href="#-高精度推荐">🚀 高精度推荐</a></li>
+        <li><a href="#-远程高性能">🚀 远程高性能</a></li>
+        <li><a href="#-批量处理">🚀 批量处理</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
       <h1 id="-minerupdf-转-markdown-使用说明">📄 MinerU：PDF 转 Markdown 使用说明</h1>
-<p>本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），包括<strong>单文件转换</strong>和<strong>批量转换</strong>两种场景。</p>
+<p>本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），涵盖**单文件转换、批量转换以及性能优化（加速）**等内容，帮助你在不同场景下获得最佳效果。</p>
 <hr>
 <h1 id="-一环境要求">🧩 一、环境要求</h1>
 <p>确保已完成以下配置：</p>
 <ul>
 <li>✅ 已安装 MinerU（当前版本：2.7.6）</li>
-<li>✅ Python 环境正常（建议 Conda）</li>
+<li>✅ Python 环境正常（建议使用 Conda）</li>
 <li>✅ GPU 可用（如需加速）</li>
+<li>✅ （可选）已配置远程推理服务（用于 <code>http-client</code> 模式）</li>
 </ul>
 <p>测试命令：</p>
 <div class="highlight"><div class="chroma">
@@ -202,12 +216,12 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mineru --version
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mineru --version
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h1 id="-二基本命令格式">🚀 二、基本命令格式</h1>
-<p>MinerU 当前版本使用 <strong>单层 CLI 命令</strong>：</p>
+<p>MinerU 使用统一 CLI 命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -239,7 +253,7 @@
 </div>
 </div><hr>
 <h2 id="-输出结果">📦 输出结果</h2>
-<p>在 <code>output_dir</code> 中生成：</p>
+<p>在 <code>output_dir</code> 中通常会生成：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -247,9 +261,9 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">example.md          ✅ Markdown文件（目标）
-</span></span><span class="line"><span class="cl">example.json        （结构化数据）
-</span></span><span class="line"><span class="cl">images/             （图片资源）
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">example.md          ✅ Markdown 文件（目标）
+</span></span><span class="line"><span class="cl">example.json        📊 结构化解析结果
+</span></span><span class="line"><span class="cl">images/             🖼️ 图片资源
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
@@ -280,11 +294,16 @@
 <ul>
 <li>✔ 自动处理目录中的 PDF 文件</li>
 <li>✔ 支持多文件批量转换</li>
-<li>⚠️ 是否递归子目录取决于版本（建议测试）</li>
+<li>⚠️ 是否递归子目录取决于版本（建议实际测试）</li>
 </ul>
 <hr>
-<h1 id="-五推荐参数强烈建议">⚡ 五、推荐参数（强烈建议）</h1>
-<h2 id="-使用-gpu-加速">✅ 使用 GPU 加速</h2>
+<h1 id="-五加速与性能优化重点">⚡ 五、加速与性能优化（重点）</h1>
+<p>MinerU 的性能优化核心在于：</p>
+<blockquote>
+<p>✅ <strong>后端（backend） + 硬件（device） + 解析策略（method）</strong></p>
+</blockquote>
+<hr>
+<h2 id="-1-gpu-加速强烈推荐">🚀 1. GPU 加速（强烈推荐）</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -293,8 +312,47 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-d cuda
 </span></span></code></pre></td></tr></table>
 </div>
-</div><hr>
-<h2 id="-完整推荐命令">✅ 完整推荐命令</h2>
+</div><p>指定 GPU：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-d cuda:0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 适用于：</p>
+<ul>
+<li>OCR 任务</li>
+<li>模型推理</li>
+<li>大规模批量处理</li>
+</ul>
+<hr>
+<h2 id="-2-推荐高性能命令本地">🚀 2. 推荐高性能命令（本地）</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mineru -p &#34;输入路径&#34; \
+</span></span><span class="line"><span class="cl">       -o &#34;输出目录&#34; \
+</span></span><span class="line"><span class="cl">       -b hybrid-auto-engine \
+</span></span><span class="line"><span class="cl">       -d cuda \
+</span></span><span class="line"><span class="cl">       -m auto
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 特点：</p>
+<ul>
+<li>✅ 精度高</li>
+<li>✅ 速度快</li>
+<li>✅ 自动策略选择</li>
+</ul>
+<hr>
+<h2 id="-3-使用远程加速极致性能">🚀 3. 使用远程加速（极致性能）</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -303,46 +361,119 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mineru -p &#34;输入目录&#34; \
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mineru -p &#34;输入路径&#34; \
 </span></span><span class="line"><span class="cl">       -o &#34;输出目录&#34; \
-</span></span><span class="line"><span class="cl">       -d cuda \
-</span></span><span class="line"><span class="cl">       -m auto
+</span></span><span class="line"><span class="cl">       -b hybrid-http-client \
+</span></span><span class="line"><span class="cl">       -u http://127.0.0.1:30000
 </span></span></code></pre></td></tr></table>
 </div>
-</div><hr>
-<h2 id="-参数说明">📌 参数说明</h2>
+</div><p>👉 特点：</p>
+<ul>
+<li>本地只做轻量任务</li>
+<li>重计算交给远程服务</li>
+<li><strong>速度取决于服务器性能</strong></li>
+</ul>
+<hr>
+<h2 id="-4-纯文本-pdf-极速模式">🚀 4. 纯文本 PDF 极速模式</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-m txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 适用于：</p>
+<ul>
+<li>论文（可复制文本）</li>
+<li>电子书</li>
+<li>非扫描 PDF</li>
+</ul>
+<p>👉 <strong>速度最快（推荐优先尝试）</strong></p>
+<hr>
+<h2 id="-5-限制处理范围加速">🚀 5. 限制处理范围（加速）</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-s 0 -e 10
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 只处理前 10 页</p>
+<hr>
+<h2 id="-6-关闭不必要功能">🚀 6. 关闭不必要功能</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-f False   # 关闭公式识别
+</span></span><span class="line"><span class="cl">-t False   # 关闭表格识别
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 可显著提升速度（特别是 OCR 场景）</p>
+<hr>
+<h1 id="-六参数说明核心理解">📌 六、参数说明（核心理解）</h1>
 <table>
 <thead>
 <tr>
 <th>参数</th>
+<th>作用</th>
 <th>说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>-p</code></td>
-<td>输入 PDF 文件或目录（必填）</td>
+<td>输入路径</td>
+<td>文件或目录（必填）</td>
 </tr>
 <tr>
 <td><code>-o</code></td>
-<td>输出目录（必填）</td>
+<td>输出路径</td>
+<td>结果存放位置（必填）</td>
+</tr>
+<tr>
+<td><code>-b</code></td>
+<td>backend</td>
+<td><strong>选择处理架构（非常重要）</strong></td>
 </tr>
 <tr>
 <td><code>-d</code></td>
-<td>设备（<code>cuda</code> / <code>cpu</code>）</td>
+<td>device</td>
+<td><strong>控制 CPU / GPU</strong></td>
 </tr>
 <tr>
 <td><code>-m</code></td>
-<td>解析方式（<code>auto</code> / <code>txt</code> / <code>ocr</code>）</td>
+<td>method</td>
+<td>解析方式（txt / ocr / auto）</td>
+</tr>
+<tr>
+<td><code>-l</code></td>
+<td>lang</td>
+<td>语言（提升 OCR 精度）</td>
+</tr>
+<tr>
+<td><code>-u</code></td>
+<td>server_url</td>
+<td>远程推理地址</td>
+</tr>
+<tr>
+<td><code>-s/-e</code></td>
+<td>页范围</td>
+<td>控制处理页数</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h1 id="-六解析模式选择重要">🧠 六、解析模式选择（重要）</h1>
+<h1 id="-七解析模式选择重要">🧠 七、解析模式选择（重要）</h1>
 <table>
 <thead>
 <tr>
 <th>模式</th>
+<th>说明</th>
 <th>适用场景</th>
 </tr>
 </thead>
@@ -350,55 +481,85 @@
 <tr>
 <td><code>auto</code></td>
 <td>自动判断（推荐）</td>
+<td>通用</td>
 </tr>
 <tr>
 <td><code>txt</code></td>
-<td>文本型 PDF（论文、报告，速度快）</td>
+<td>文本提取</td>
+<td>纯文本 PDF（最快）</td>
 </tr>
 <tr>
 <td><code>ocr</code></td>
-<td>扫描版 PDF（图片型）</td>
+<td>OCR识别</td>
+<td>扫描件 PDF</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h1 id="-七注意事项">⚠️ 七、注意事项</h1>
-<h2 id="-1-默认不只输出-markdown">❗ 1. 默认不只输出 Markdown</h2>
-<p>MinerU 会生成：</p>
+<h1 id="-八常见误区重要">⚠️ 八、常见误区（重要）</h1>
+<h2 id="-1--b--cpu--gpu">❗ 1. <code>-b</code> ≠ CPU / GPU</h2>
 <ul>
-<li><code>.md</code>（目标文件）</li>
-<li><code>.json</code></li>
-<li><code>images/</code></li>
+<li><code>-b</code>：控制<strong>处理架构（算法）</strong></li>
+<li><code>-d</code>：控制<strong>计算设备（CPU/GPU）</strong></li>
 </ul>
-<p>👉 如只需要 Markdown，请自行筛选 <code>.md</code> 文件</p>
 <hr>
-<h2 id="-2-空间路径需加引号">❗ 2. 空间路径需加引号</h2>
-<p>例如：</p>
+<h2 id="-2-默认并不一定是最优">❗ 2. 默认并不一定是最优</h2>
+<p>建议根据场景选择：</p>
+<ul>
+<li>
+<p>快速：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#34;C:\Users\xxx\My Papers&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-m txt -d cuda
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>高精度：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-b hybrid-auto-engine -d cuda
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<hr>
+<h2 id="-3-路径必须加引号windows">❗ 3. 路径必须加引号（Windows）</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#34;D:\My Papers\paper.pdf&#34;
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h1 id="-八结果验证">🔍 八、结果验证</h1>
-<p>转换完成后，检查：</p>
+<h1 id="-九结果验证">🔍 九、结果验证</h1>
+<p>检查输出目录：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">输出目录/
-</span></span><span class="line"><span class="cl">├── xxx.md   ✅ 是否存在
+</span></span><span class="line"><span class="cl">├── example.md   ✅ Markdown
+</span></span><span class="line"><span class="cl">├── example.json
+</span></span><span class="line"><span class="cl">├── images/
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h1 id="-九常见问题">🧪 九、常见问题</h1>
-<h2 id="-报错missing-option--p">❌ 报错：Missing option &lsquo;-p&rsquo;</h2>
-<p>👉 原因：未使用 <code>-p</code> 参数
+<h1 id="-十常见问题">🧪 十、常见问题</h1>
+<h2 id="-missing-option--p">❌ Missing option &lsquo;-p&rsquo;</h2>
+<p>👉 原因：未指定输入路径
 👉 解决：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -410,7 +571,7 @@
 </div>
 </div><hr>
 <h2 id="-gpu-未生效">❌ GPU 未生效</h2>
-<p>👉 检查是否添加：</p>
+<p>👉 检查：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -419,43 +580,73 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-d cuda
 </span></span></code></pre></td></tr></table>
 </div>
-</div><hr>
-<h2 id="-子目录未处理">❌ 子目录未处理</h2>
-<p>👉 当前版本可能不递归
-👉 解决：</p>
+</div><p>并确认：</p>
 <ul>
-<li>手动分层处理</li>
-<li>或使用脚本递归调用</li>
+<li>CUDA 已安装</li>
+<li>GPU 可用</li>
 </ul>
 <hr>
-<h1 id="-十总结">🎯 十、总结</h1>
-<table>
-<thead>
-<tr>
-<th>功能</th>
-<th>命令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>单个 PDF</td>
-<td><code>mineru -p file.pdf -o out</code></td>
-</tr>
-<tr>
-<td>批量目录</td>
-<td><code>mineru -p dir -o out</code></td>
-</tr>
-<tr>
-<td>GPU 加速</td>
-<td><code>-d cuda</code></td>
-</tr>
-<tr>
-<td>推荐模式</td>
-<td><code>-m auto</code></td>
-</tr>
-</tbody>
-</table>
-
+<h2 id="-速度慢">❌ 速度慢</h2>
+<p>👉 优化建议：</p>
+<ul>
+<li>使用 <code>-m txt</code></li>
+<li>使用 GPU：<code>-d cuda</code></li>
+<li>使用 <code>hybrid</code> backend</li>
+<li>限制页数：<code>-s/-e</code></li>
+</ul>
+<hr>
+<h2 id="-子目录未处理">❌ 子目录未处理</h2>
+<p>👉 可能原因：</p>
+<ul>
+<li>版本不支持递归</li>
+</ul>
+<p>👉 解决：</p>
+<ul>
+<li>编写脚本递归调用</li>
+<li>或手动分目录处理</li>
+</ul>
+<hr>
+<h1 id="-十一总结推荐组合">🎯 十一、总结（推荐组合）</h1>
+<h2 id="-单文件最快">🚀 单文件最快</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mineru -p file.pdf -o out -m txt -d cuda
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="-高精度推荐">🚀 高精度推荐</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mineru -p file.pdf -o out -b hybrid-auto-engine -d cuda
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="-远程高性能">🚀 远程高性能</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mineru -p file.pdf -o out -b hybrid-http-client -u http://server:port
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="-批量处理">🚀 批量处理</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mineru -p input_dir -o output_dir -d cuda
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
