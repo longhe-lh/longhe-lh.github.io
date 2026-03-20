@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Long He" /><meta name="description" content="🧠 在 Cursor 中使用 OpenSkills &#43; Obsidian Skills（完整实战指南） 目标：在 Cursor 中使用 Anthropic 的 Skills 体系（通过 OpenSkills），并结合 Obsidian Skills 提升生产力。 ✨ 一、什么是 Op" />
+<meta name="author" content="Long He" /><meta name="description" content="🧠 在 Cursor 中使用 OpenSkills &#43; Obsidian Skills（完整实战指南） 目标：在 Cursor 中使用 Anthropic Skills 体系（通过 OpenSkills），并结合 Obsidian Skills 提升知识生产效率。 ✨ 一、什么是" />
 
 
 
@@ -40,19 +40,19 @@
 
 
 <meta property="og:title" content="🧠 在 Cursor 中使用 OpenSkills &#43; Obsidian Skills（完整实战指南）" />
-<meta property="og:description" content="🧠 在 Cursor 中使用 OpenSkills &#43; Obsidian Skills（完整实战指南） 目标：在 Cursor 中使用 Anthropic 的 Skills 体系（通过 OpenSkills），并结合 Obsidian Skills 提升生产力。 ✨ 一、什么是 Op" />
+<meta property="og:description" content="🧠 在 Cursor 中使用 OpenSkills &#43; Obsidian Skills（完整实战指南） 目标：在 Cursor 中使用 Anthropic Skills 体系（通过 OpenSkills），并结合 Obsidian Skills 提升知识生产效率。 ✨ 一、什么是" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://helong0102.github.io/post/%E5%9C%A8-cursor-%E4%B8%AD%E4%BD%BF%E7%94%A8-openskills-&#43;-obsidian-skills/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2026-03-19T01:37:56+21:00" />
 <meta property="article:modified_time" content="2026-03-19T01:37:56+22:00" />
 
 <meta itemprop="name" content="🧠 在 Cursor 中使用 OpenSkills &#43; Obsidian Skills（完整实战指南）">
-<meta itemprop="description" content="🧠 在 Cursor 中使用 OpenSkills &#43; Obsidian Skills（完整实战指南） 目标：在 Cursor 中使用 Anthropic 的 Skills 体系（通过 OpenSkills），并结合 Obsidian Skills 提升生产力。 ✨ 一、什么是 Op"><meta itemprop="datePublished" content="2026-03-19T01:37:56+21:00" />
+<meta itemprop="description" content="🧠 在 Cursor 中使用 OpenSkills &#43; Obsidian Skills（完整实战指南） 目标：在 Cursor 中使用 Anthropic Skills 体系（通过 OpenSkills），并结合 Obsidian Skills 提升知识生产效率。 ✨ 一、什么是"><meta itemprop="datePublished" content="2026-03-19T01:37:56+21:00" />
 <meta itemprop="dateModified" content="2026-03-19T01:37:56+22:00" />
-<meta itemprop="wordCount" content="1141">
+<meta itemprop="wordCount" content="1274">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="🧠 在 Cursor 中使用 OpenSkills &#43; Obsidian Skills（完整实战指南）"/>
-<meta name="twitter:description" content="🧠 在 Cursor 中使用 OpenSkills &#43; Obsidian Skills（完整实战指南） 目标：在 Cursor 中使用 Anthropic 的 Skills 体系（通过 OpenSkills），并结合 Obsidian Skills 提升生产力。 ✨ 一、什么是 Op"/>
+<meta name="twitter:description" content="🧠 在 Cursor 中使用 OpenSkills &#43; Obsidian Skills（完整实战指南） 目标：在 Cursor 中使用 Anthropic Skills 体系（通过 OpenSkills），并结合 Obsidian Skills 提升知识生产效率。 ✨ 一、什么是"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -147,71 +147,63 @@
         <li><a href="#-核心理解一句话">🧠 核心理解（一句话）</a></li>
       </ul>
     </li>
-    <li><a href="#-二环境准备">🚀 二、环境准备</a>
+    <li><a href="#-二cursor-中-skills-的使用方式">🚀 二、Cursor 中 Skills 的使用方式</a>
+      <ul>
+        <li><a href="#-两种使用模式非常重要">⚠️ 两种使用模式（非常重要）</a></li>
+        <li><a href="#-1-隐式使用推荐现代方式">✅ 1. 隐式使用（推荐，现代方式）</a></li>
+        <li><a href="#-2-显式使用高级控制">✅ 2. 显式使用（高级控制）</a></li>
+        <li><a href="#-结论">🧠 结论</a></li>
+      </ul>
+    </li>
+    <li><a href="#-三环境准备">📦 三、环境准备</a>
       <ul>
         <li><a href="#1-安装要求">1️⃣ 安装要求</a></li>
-        <li><a href="#2-安装-openskills无需全局安装">2️⃣ 安装 OpenSkills（无需全局安装）</a></li>
+        <li><a href="#2-安装-openskills">2️⃣ 安装 OpenSkills</a></li>
       </ul>
     </li>
-    <li><a href="#-三安装-skills">📦 三、安装 Skills</a>
+    <li><a href="#-四安装-skills">📥 四、安装 Skills</a>
       <ul>
-        <li><a href="#-1-安装官方-skillsanthropic">✅ 1. 安装官方 Skills（Anthropic）</a></li>
-        <li><a href="#-2-安装-obsidian-skills推荐">✅ 2. 安装 Obsidian Skills（推荐）</a></li>
-        <li><a href="#-安装后目录结构">📁 安装后目录结构</a></li>
+        <li><a href="#-官方-skills">✅ 官方 Skills</a></li>
+        <li><a href="#-obsidian-skills推荐">✅ Obsidian Skills（推荐）</a></li>
+        <li><a href="#-目录结构">📁 目录结构</a></li>
       </ul>
     </li>
-    <li><a href="#-四生成-agentsmd关键步骤">🔧 四、生成 AGENTS.md（关键步骤）</a></li>
-    <li><a href="#-五查看-skills">🧰 五、查看 Skills</a></li>
-    <li><a href="#-六skills-的正确使用方式重点">🧠 六、Skills 的正确使用方式（重点）</a>
+    <li><a href="#-五生成-agentsmd">🔧 五、生成 AGENTS.md</a></li>
+    <li><a href="#-六查看-skills">🧰 六、查看 Skills</a></li>
+    <li><a href="#-七实战示例非常关键">🎯 七、实战示例（非常关键）</a>
       <ul>
-        <li><a href="#重要认知">❗重要认知</a></li>
-        <li><a href="#-标准使用流程推荐">✅ 标准使用流程（推荐）</a>
-          <ul>
-            <li><a href="#-step-1加载-skill">🪜 Step 1：加载 Skill</a></li>
-            <li><a href="#-step-2复制输出">🪜 Step 2：复制输出</a></li>
-            <li><a href="#-step-3粘贴到-cursor-chat">🪜 Step 3：粘贴到 Cursor Chat</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#-七实战示例强烈推荐">🔥 七、实战示例（强烈推荐）</a>
-      <ul>
-        <li><a href="#-示例-1生成-obsidian-笔记">🎯 示例 1：生成 Obsidian 笔记</a>
-          <ul>
-            <li><a href="#step-1">Step 1</a></li>
-            <li><a href="#step-2cursor-chat">Step 2（Cursor Chat）</a></li>
-          </ul>
-        </li>
-        <li><a href="#-示例-2生成-canvas-思维导图">🎯 示例 2：生成 Canvas 思维导图</a></li>
+        <li><a href="#-示例-1直接使用-skill推荐">🎯 示例 1：直接使用 Skill（推荐）</a></li>
+        <li><a href="#-示例-2obsidian-笔记">🎯 示例 2：Obsidian 笔记</a></li>
         <li><a href="#-示例-3网页转-markdown">🎯 示例 3：网页转 Markdown</a></li>
+        <li><a href="#-示例-4生成-canvas-思维导图">🎯 示例 4：生成 Canvas 思维导图</a></li>
       </ul>
     </li>
-    <li><a href="#-八obsidian-skills-说明">📚 八、Obsidian Skills 说明</a></li>
+    <li><a href="#-八obsidian-skills-说明">🧠 八、Obsidian Skills 说明</a></li>
     <li><a href="#-九常见误区">⚠️ 九、常见误区</a>
       <ul>
-        <li><a href="#-误区-1这是插件">❌ 误区 1：这是插件？</a></li>
-        <li><a href="#-误区-2要提前执行">❌ 误区 2：要提前执行？</a></li>
-        <li><a href="#-误区-3cursor-会自动用">❌ 误区 3：Cursor 会自动用？</a></li>
+        <li><a href="#-误区-1必须手动-read-才能用">❌ 误区 1：必须手动 read 才能用</a></li>
+        <li><a href="#-误区-2skill-是插件">❌ 误区 2：Skill 是插件</a></li>
+        <li><a href="#-误区-3skill-需要执行">❌ 误区 3：Skill 需要“执行”</a></li>
       </ul>
     </li>
-    <li><a href="#-十推荐工作流最优实践">🧠 十、推荐工作流（最优实践）</a>
+    <li><a href="#-十推荐工作流最佳实践">🧠 十、推荐工作流（最佳实践）</a>
       <ul>
-        <li><a href="#-标准流程">⭐ 标准流程</a></li>
-        <li><a href="#-进阶技巧">⭐ 进阶技巧</a></li>
+        <li><a href="#-日常使用推荐">⭐ 日常使用（推荐）</a></li>
+        <li><a href="#-进阶使用精细控制">⭐ 进阶使用（精细控制）</a></li>
+        <li><a href="#-调试技巧">⭐ 调试技巧</a></li>
       </ul>
     </li>
-    <li><a href="#-十一进阶玩法建议">🚀 十一、进阶玩法（建议）</a>
+    <li><a href="#-十一进阶玩法">🚀 十一、进阶玩法</a>
       <ul>
-        <li><a href="#-1-多-skill-组合">🔥 1. 多 Skill 组合</a></li>
+        <li><a href="#-1-多-skill-协同">🔥 1. 多 Skill 协同</a></li>
         <li><a href="#-2-自定义-skill">🔥 2. 自定义 Skill</a></li>
-        <li><a href="#-3-结合研究工作推荐">🔥 3. 结合研究工作（推荐）</a></li>
       </ul>
     </li>
-    <li><a href="#-十二总结">🎯 十二、总结</a>
+    <li><a href="#-十二总结优化版">🎯 十二、总结（优化版）</a>
       <ul>
-        <li><a href="#-核心一句话">🧠 核心一句话</a></li>
-        <li><a href="#-最重要命令">🚀 最重要命令</a></li>
-        <li><a href="#-最终理解">🧩 最终理解</a></li>
+        <li><a href="#-一句话总结">🧠 一句话总结</a></li>
+        <li><a href="#-两种使用方式">🚀 两种使用方式</a></li>
+        <li><a href="#-核心认知升级">🧩 核心认知升级</a></li>
       </ul>
     </li>
   </ul>
@@ -221,78 +213,143 @@
     <div class="post-content">
       <h1 id="-在-cursor-中使用-openskills--obsidian-skills完整实战指南">🧠 在 Cursor 中使用 OpenSkills + Obsidian Skills（完整实战指南）</h1>
 <blockquote>
-<p>目标：在 Cursor 中使用 Anthropic 的 Skills 体系（通过 OpenSkills），并结合 Obsidian Skills 提升生产力。</p>
+<p>目标：在 Cursor 中使用 Anthropic Skills 体系（通过 OpenSkills），并结合 Obsidian Skills 提升知识生产效率。</p>
 </blockquote>
 <hr>
 <h1 id="-一什么是-openskills">✨ 一、什么是 OpenSkills？</h1>
-<p><strong>OpenSkills = Claude Skills 的通用加载器</strong></p>
-<p>它的作用是：</p>
+<p><strong>OpenSkills = Skills 的通用加载与适配层</strong></p>
+<p>它的核心作用是：</p>
 <ul>
-<li>把 Anthropic 的 <code>SKILL.md</code> 变成通用格式</li>
-<li>生成 <code>AGENTS.md</code>（供 AI 读取）</li>
-<li>让 Cursor / Codex / Aider 等工具都能用 Skills</li>
+<li>将 Anthropic 的 <code>SKILL.md</code> 转换为标准格式</li>
+<li>生成统一的 <code>AGENTS.md</code></li>
+<li>让不同 AI 工具（Cursor / Aider / Codex）可以理解 Skills</li>
 </ul>
 <hr>
 <h2 id="-核心理解一句话">🧠 核心理解（一句话）</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Skill = 一段“专家级 Prompt 模板”
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Skill = 一段“专家级 Prompt 模板”
+</span></span><span class="line"><span class="cl">OpenSkills = Skill 的组织与分发工具
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>👉 OpenSkills 做的事情：</p>
+</div><hr>
+<h1 id="-二cursor-中-skills-的使用方式">🚀 二、Cursor 中 Skills 的使用方式</h1>
+<h2 id="-两种使用模式非常重要">⚠️ 两种使用模式（非常重要）</h2>
+<hr>
+<h2 id="-1-隐式使用推荐现代方式">✅ 1. 隐式使用（推荐，现代方式）</h2>
+<p>在 Cursor 中，你<strong>不需要手动读取 Skill</strong>，可以直接：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">读取 SKILL.md → 输出 Prompt → 你喂给 AI
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">使用 xlsx skills 帮我生成20条登录测试用例
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>或：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">用 obsidian-markdown skills 帮我生成一篇笔记
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 模型会：</p>
+<ul>
+<li>自动识别任务</li>
+<li>自动匹配对应 skill</li>
+<li>自动应用 skill 的规则</li>
+</ul>
+<hr>
+<h2 id="-2-显式使用高级控制">✅ 2. 显式使用（高级控制）</h2>
+<p>在以下情况建议使用：</p>
+<ul>
+<li>你想<strong>精确控制 prompt</strong></li>
+<li>Skill 复杂或效果不稳定</li>
+<li>你需要调试输出</li>
+</ul>
+<p>步骤：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npx openskills read &lt;skill-name&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后粘贴到 Cursor：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">（粘贴 Skill）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">请帮我完成以下任务：
+</span></span><span class="line"><span class="cl">xxx
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h1 id="-二环境准备">🚀 二、环境准备</h1>
+<h2 id="-结论">🧠 结论</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">日常使用 → 直接说人话即可（推荐）
+</span></span><span class="line"><span class="cl">调试 / 精细控制 → 手动加载 Skill
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h1 id="-三环境准备">📦 三、环境准备</h1>
 <h2 id="1-安装要求">1️⃣ 安装要求</h2>
 <ul>
 <li>Node.js &gt;= 20.6</li>
 <li>Git</li>
 </ul>
 <hr>
-<h2 id="2-安装-openskills无需全局安装">2️⃣ 安装 OpenSkills（无需全局安装）</h2>
-<p>直接用：</p>
+<h2 id="2-安装-openskills">2️⃣ 安装 OpenSkills</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npx openskills
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npx openskills
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h1 id="-三安装-skills">📦 三、安装 Skills</h1>
+<h1 id="-四安装-skills">📥 四、安装 Skills</h1>
 <hr>
-<h2 id="-1-安装官方-skillsanthropic">✅ 1. 安装官方 Skills（Anthropic）</h2>
+<h2 id="-官方-skills">✅ 官方 Skills</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npx openskills install anthropics/skills --universal
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npx openskills install anthropics/skills --universal
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h2 id="-2-安装-obsidian-skills推荐">✅ 2. 安装 Obsidian Skills（推荐）</h2>
+<h2 id="-obsidian-skills推荐">✅ Obsidian Skills（推荐）</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npx openskills install kepano/obsidian-skills --universal
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npx openskills install kepano/obsidian-skills --universal
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h2 id="-安装后目录结构">📁 安装后目录结构</h2>
+<h2 id="-目录结构">📁 目录结构</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -303,7 +360,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">.agent/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">.agent/
 </span></span><span class="line"><span class="cl">  skills/
 </span></span><span class="line"><span class="cl">    obsidian-markdown/
 </span></span><span class="line"><span class="cl">      SKILL.md
@@ -312,13 +369,13 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h1 id="-四生成-agentsmd关键步骤">🔧 四、生成 AGENTS.md（关键步骤）</h1>
+<h1 id="-五生成-agentsmd">🔧 五、生成 AGENTS.md</h1>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npx openskills sync
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npx openskills sync
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>生成：</p>
@@ -327,111 +384,45 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">AGENTS.md
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">AGENTS.md
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>👉 作用：</p>
 <ul>
-<li>告诉 AI 当前有哪些 skills</li>
-<li>统一技能描述格式（XML）</li>
+<li>让 AI 知道有哪些 Skills</li>
+<li>提供统一上下文</li>
+<li>提升自动调用能力（关键）</li>
 </ul>
 <hr>
-<h1 id="-五查看-skills">🧰 五、查看 Skills</h1>
+<h1 id="-六查看-skills">🧰 六、查看 Skills</h1>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npx openskills list
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>示例：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">obsidian-markdown
-</span></span><span class="line"><span class="cl">obsidian-bases
-</span></span><span class="line"><span class="cl">json-canvas
-</span></span><span class="line"><span class="cl">obsidian-cli
-</span></span><span class="line"><span class="cl">defuddle
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npx openskills list
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h1 id="-六skills-的正确使用方式重点">🧠 六、Skills 的正确使用方式（重点）</h1>
+<h1 id="-七实战示例非常关键">🎯 七、实战示例（非常关键）</h1>
 <hr>
-<h2 id="重要认知">❗重要认知</h2>
-<p>👉 Cursor <strong>不会自动调用 Skills</strong></p>
-<p>👉 所以你必须：</p>
+<h2 id="-示例-1直接使用-skill推荐">🎯 示例 1：直接使用 Skill（推荐）</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">手动加载 Skill → 再问问题
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">使用 xlsx skills 帮我生成20条登录测试用例
 </span></span></code></pre></td></tr></table>
 </div>
-</div><hr>
-<h2 id="-标准使用流程推荐">✅ 标准使用流程（推荐）</h2>
+</div><p>👉 可能得到：</p>
+<ul>
+<li>Excel 表结构</li>
+<li>多种测试场景</li>
+<li>边界情况</li>
+</ul>
 <hr>
-<h3 id="-step-1加载-skill">🪜 Step 1：加载 Skill</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npx openskills <span class="nb">read</span> obsidian-markdown
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
-<h3 id="-step-2复制输出">🪜 Step 2：复制输出</h3>
-<p>得到一段 Prompt（Skill 内容）</p>
-<hr>
-<h3 id="-step-3粘贴到-cursor-chat">🪜 Step 3：粘贴到 Cursor Chat</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">（粘贴 skill 内容）
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">帮我写一篇 Obsidian 笔记：
-</span></span><span class="line"><span class="cl">主题：跨链桥漏洞分类
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
-<p>👉 本质：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Skill = Prompt增强器
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
-<h1 id="-七实战示例强烈推荐">🔥 七、实战示例（强烈推荐）</h1>
-<hr>
-<h2 id="-示例-1生成-obsidian-笔记">🎯 示例 1：生成 Obsidian 笔记</h2>
-<h3 id="step-1">Step 1</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npx openskills <span class="nb">read</span> obsidian-markdown
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
-<h3 id="step-2cursor-chat">Step 2（Cursor Chat）</h3>
+<h2 id="-示例-2obsidian-笔记">🎯 示例 2：Obsidian 笔记</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -440,66 +431,46 @@
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">（粘贴 skill）
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">帮我写一份 Obsidian 笔记：
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">帮我写一篇 Obsidian 笔记：
 </span></span><span class="line"><span class="cl">主题：跨链桥漏洞
 </span></span><span class="line"><span class="cl">要求：
 </span></span><span class="line"><span class="cl">- 使用 [[wikilinks]]
 </span></span><span class="line"><span class="cl">- 使用 callout
-</span></span><span class="line"><span class="cl">- 层次清晰
+</span></span><span class="line"><span class="cl">- 结构清晰
 </span></span></code></pre></td></tr></table>
 </div>
-</div><hr>
-<p>👉 输出会包含：</p>
-<ul>
-<li>Obsidian 语法</li>
-<li>双链</li>
-<li>callout</li>
-<li>metadata</li>
-</ul>
-<hr>
-<h2 id="-示例-2生成-canvas-思维导图">🎯 示例 2：生成 Canvas 思维导图</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npx openskills <span class="nb">read</span> json-canvas
-</span></span><span class="line"><span class="cl">（粘贴 skill）
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">帮我生成一个跨链桥攻击流程的 canvas
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
-<p>👉 输出 <code>.canvas</code> JSON</p>
+</div><p>👉 如果 Skill 被识别，会自动应用格式规范</p>
 <hr>
 <h2 id="-示例-3网页转-markdown">🎯 示例 3：网页转 Markdown</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npx openskills <span class="nb">read</span> defuddle
-</span></span><span class="line"><span class="cl">（粘贴 skill）
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">帮我提取这个网页内容并转成干净 markdown：
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">提取这个网页内容并转为 markdown：
 </span></span><span class="line"><span class="cl">&lt;URL&gt;
 </span></span></code></pre></td></tr></table>
 </div>
-</div><hr>
-<h1 id="-八obsidian-skills-说明">📚 八、Obsidian Skills 说明</h1>
+</div><p>👉 使用：</p>
+<ul>
+<li>defuddle skill（自动或隐式）</li>
+</ul>
+<hr>
+<h2 id="-示例-4生成-canvas-思维导图">🎯 示例 4：生成 Canvas 思维导图</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">生成一个跨链桥攻击流程的 canvas
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 输出 <code>.canvas</code> JSON</p>
+<hr>
+<h1 id="-八obsidian-skills-说明">🧠 八、Obsidian Skills 说明</h1>
 <table>
 <thead>
 <tr>
@@ -510,148 +481,164 @@
 <tbody>
 <tr>
 <td>obsidian-markdown</td>
-<td>写 Obsidian Markdown</td>
+<td>生成规范笔记</td>
 </tr>
 <tr>
 <td>obsidian-bases</td>
-<td>类似数据库（Notion风格）</td>
+<td>数据库式管理</td>
 </tr>
 <tr>
 <td>json-canvas</td>
-<td>思维导图</td>
+<td>思维导图 / 可视化结构</td>
 </tr>
 <tr>
 <td>obsidian-cli</td>
-<td>CLI 自动化</td>
+<td>自动化操作</td>
 </tr>
 <tr>
 <td>defuddle</td>
-<td>网页转 Markdown</td>
+<td>网页清洗 + Markdown 转换</td>
 </tr>
 </tbody>
 </table>
 <hr>
 <h1 id="-九常见误区">⚠️ 九、常见误区</h1>
 <hr>
-<h2 id="-误区-1这是插件">❌ 误区 1：这是插件？</h2>
-<p>不是 ❌</p>
+<h2 id="-误区-1必须手动-read-才能用">❌ 误区 1：必须手动 read 才能用</h2>
+<p>👉 错</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">现在支持自动调用 Skill（在 Cursor 中）
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="-误区-2skill-是插件">❌ 误区 2：Skill 是插件</h2>
+<p>👉 错</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Skill = Prompt 规则集合
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="-误区-3skill-需要执行">❌ 误区 3：Skill 需要“执行”</h2>
+<p>👉 错</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Skill ≠ 插件 ≠ 工具
-</span></span><span class="line"><span class="cl">Skill = Prompt
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Skill 不执行代码
+</span></span><span class="line"><span class="cl">Skill 是指导 AI 行为
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h2 id="-误区-2要提前执行">❌ 误区 2：要提前执行？</h2>
-<p>不是 ❌</p>
+<h1 id="-十推荐工作流最佳实践">🧠 十、推荐工作流（最佳实践）</h1>
+<hr>
+<h2 id="-日常使用推荐">⭐ 日常使用（推荐）</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">直接描述任务 + 使用 Skills 关键词
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">用 obsidian-markdown skills 写一篇跨链桥漏洞分析笔记
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="-进阶使用精细控制">⭐ 进阶使用（精细控制）</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">不是初始化命令
-</span></span><span class="line"><span class="cl">而是按需调用
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1️⃣ openskills read xxx
+</span></span><span class="line"><span class="cl">2️⃣ 粘贴 Skill
+</span></span><span class="line"><span class="cl">3️⃣ 明确任务
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h2 id="-误区-3cursor-会自动用">❌ 误区 3：Cursor 会自动用？</h2>
-<p>不会 ❌</p>
-<p>👉 Cursor ≠ Claude Code</p>
-<hr>
-<h1 id="-十推荐工作流最优实践">🧠 十、推荐工作流（最优实践）</h1>
-<hr>
-<h2 id="-标准流程">⭐ 标准流程</h2>
+<h2 id="-调试技巧">⭐ 调试技巧</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1️⃣ 想做什么（例如：写笔记）
-</span></span><span class="line"><span class="cl">2️⃣ npx openskills read xxx
-</span></span><span class="line"><span class="cl">3️⃣ 复制
-</span></span><span class="line"><span class="cl">4️⃣ 粘贴到 Chat
-</span></span><span class="line"><span class="cl">5️⃣ 提问
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">如果输出不理想：
+</span></span><span class="line"><span class="cl">- 明确说明格式
+</span></span><span class="line"><span class="cl">- 加上约束条件
+</span></span><span class="line"><span class="cl">- 或手动加载 Skill
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h2 id="-进阶技巧">⭐ 进阶技巧</h2>
+<h1 id="-十一进阶玩法">🚀 十一、进阶玩法</h1>
+<hr>
+<h2 id="-1-多-skill-协同">🔥 1. 多 Skill 协同</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Use this skill:
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">同时使用：
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">（粘贴 skill）
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Now do:
-</span></span><span class="line"><span class="cl">xxx任务
+</span></span><span class="line"><span class="cl">- obsidian-markdown
+</span></span><span class="line"><span class="cl">- json-canvas
 </span></span></code></pre></td></tr></table>
 </div>
-</div><hr>
-<h1 id="-十一进阶玩法建议">🚀 十一、进阶玩法（建议）</h1>
+</div><p>👉 一个输出笔记 + 一个输出结构图</p>
 <hr>
-<h2 id="-1-多-skill-组合">🔥 1. 多 Skill 组合</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npx openskills <span class="nb">read</span> obsidian-markdown,defuddle
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
 <h2 id="-2-自定义-skill">🔥 2. 自定义 Skill</h2>
-<p>结构：</p>
+<p>目录结构：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">my-skill/
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">my-skill/
 </span></span><span class="line"><span class="cl">  SKILL.md
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h2 id="-3-结合研究工作推荐">🔥 3. 结合研究工作（推荐）</h2>
-<p>适用于：</p>
-<ul>
-<li>Solidity 审计</li>
-<li>跨链桥漏洞分析</li>
-<li>Slither 报告生成</li>
-<li>论文写作辅助</li>
-</ul>
+<h1 id="-十二总结优化版">🎯 十二、总结（优化版）</h1>
 <hr>
-<h1 id="-十二总结">🎯 十二、总结</h1>
-<hr>
-<h2 id="-核心一句话">🧠 核心一句话</h2>
+<h2 id="-一句话总结">🧠 一句话总结</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">OpenSkills = Prompt Loader
-</span></span><span class="line"><span class="cl">Skill = Prompt 模板
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Skill = Prompt 增强器
+</span></span><span class="line"><span class="cl">OpenSkills = Skill 管理器
+</span></span><span class="line"><span class="cl">Cursor = Skill 的执行环境（可自动调用）
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h2 id="-最重要命令">🚀 最重要命令</h2>
+<h2 id="-两种使用方式">🚀 两种使用方式</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -659,31 +646,31 @@
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 安装</span>
-</span></span><span class="line"><span class="cl">npx openskills install kepano/obsidian-skills --universal
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1️⃣ 自动使用（推荐）
+</span></span><span class="line"><span class="cl">→ 直接用自然语言描述 + skill关键词
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 生成</span>
-</span></span><span class="line"><span class="cl">npx openskills sync
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 使用（关键）</span>
-</span></span><span class="line"><span class="cl">npx openskills <span class="nb">read</span> &lt;skill-name&gt;
+</span></span><span class="line"><span class="cl">2️⃣ 手动使用（高级）
+</span></span><span class="line"><span class="cl">→ openskills read + 粘贴
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h2 id="-最终理解">🧩 最终理解</h2>
+<h2 id="-核心认知升级">🧩 核心认知升级</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Skill 不是自动执行
-</span></span><span class="line"><span class="cl">而是你手动“喂给 AI 的专家知识”
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">旧认知：
+</span></span><span class="line"><span class="cl">必须手动加载 Skill
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">新认知：
+</span></span><span class="line"><span class="cl">AI 会自动选择 Skill，但你可以干预它
 </span></span></code></pre></td></tr></table>
 </div>
 </div>
