@@ -6,7 +6,7 @@
     <description>Recent content on ✦ 个人记录 ✧ 𝑳𝒐𝒏𝒈 𝑯𝒆 ✦</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Mar 2026 01:37:56 +2100</lastBuildDate><atom:link href="http://helong0102.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Mar 2026 01:37:56 +1716</lastBuildDate><atom:link href="http://helong0102.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于</title>
       <link>http://helong0102.github.io/about/</link>
@@ -14,6 +14,15 @@
       
       <guid>http://helong0102.github.io/about/</guid>
       <description>关于 本博客主要用于记录学习与科研心得， 分享区块链领域研究进展与个人思考。</description>
+    </item>
+    
+    <item>
+      <title>Git 回滚指南：已经提交的代码如何撤销？</title>
+      <link>http://helong0102.github.io/post/git-%E5%9B%9E%E6%BB%9A%E6%8C%87%E5%8D%97%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E7%9A%84%E4%BB%A3%E7%A0%81%E5%A6%82%E4%BD%95%E6%92%A4%E9%94%80/</link>
+      <pubDate>Sat, 21 Mar 2026 01:37:56 +1716</pubDate>
+      
+      <guid>http://helong0102.github.io/post/git-%E5%9B%9E%E6%BB%9A%E6%8C%87%E5%8D%97%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E7%9A%84%E4%BB%A3%E7%A0%81%E5%A6%82%E4%BD%95%E6%92%A4%E9%94%80/</guid>
+      <description>Git 回滚指南：已经提交的代码如何撤销？ 在日常开发中，经常会遇到需要“回滚提交”的情况，比如： 提交了错误代码 不小心加入了大文件（如 .json / .zip）</description>
     </item>
     
     <item>

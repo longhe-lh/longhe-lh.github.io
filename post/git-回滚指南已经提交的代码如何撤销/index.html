@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Git 回滚指南：已经提交的代码如何撤销？ - ✦ 个人记录 ✧ 𝑳𝒐𝒏𝒈 𝑯𝒆 ✦</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Long He" /><meta name="description" content="Git 回滚指南：已经提交的代码如何撤销？ 在日常开发中，经常会遇到需要“回滚提交”的情况，比如： 提交了错误代码 不小心加入了大文件（如 .json / .zip）" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
+
+
+<link rel="canonical" href="http://helong0102.github.io/post/git-%E5%9B%9E%E6%BB%9A%E6%8C%87%E5%8D%97%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E7%9A%84%E4%BB%A3%E7%A0%81%E5%A6%82%E4%BD%95%E6%92%A4%E9%94%80/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Git 回滚指南：已经提交的代码如何撤销？" />
+<meta property="og:description" content="Git 回滚指南：已经提交的代码如何撤销？ 在日常开发中，经常会遇到需要“回滚提交”的情况，比如： 提交了错误代码 不小心加入了大文件（如 .json / .zip）" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://helong0102.github.io/post/git-%E5%9B%9E%E6%BB%9A%E6%8C%87%E5%8D%97%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E7%9A%84%E4%BB%A3%E7%A0%81%E5%A6%82%E4%BD%95%E6%92%A4%E9%94%80/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2026-03-21T01:37:56+17:16" />
+<meta property="article:modified_time" content="2026-03-21T01:37:56+20:00" />
+
+<meta itemprop="name" content="Git 回滚指南：已经提交的代码如何撤销？">
+<meta itemprop="description" content="Git 回滚指南：已经提交的代码如何撤销？ 在日常开发中，经常会遇到需要“回滚提交”的情况，比如： 提交了错误代码 不小心加入了大文件（如 .json / .zip）"><meta itemprop="datePublished" content="2026-03-21T01:37:56+17:16" />
+<meta itemprop="dateModified" content="2026-03-21T01:37:56+20:00" />
+<meta itemprop="wordCount" content="931">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Git 回滚指南：已经提交的代码如何撤销？"/>
+<meta name="twitter:description" content="Git 回滚指南：已经提交的代码如何撤销？ 在日常开发中，经常会遇到需要“回滚提交”的情况，比如： 提交了错误代码 不小心加入了大文件（如 .json / .zip）"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">✦ 个人记录 ✧ 𝑳𝒐𝒏𝒈 𝑯𝒆 ✦</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">时间轴</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">✦ 个人记录 ✧ 𝑳𝒐𝒏𝒈 𝑯𝒆 ✦</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">时间轴</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Git 回滚指南：已经提交的代码如何撤销？</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2026-03-21 </span>
+        <div class="post-category">
+            <a href="/categories/git/"> git </a>
+            </div>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#git-回滚指南已经提交的代码如何撤销">Git 回滚指南：已经提交的代码如何撤销？</a></li>
+    <li><a href="#-一核心概念">🧠 一、核心概念</a>
+      <ul>
+        <li><a href="#1-什么是-head">1. 什么是 HEAD？</a></li>
+        <li><a href="#2-commit-id推荐">2. commit id（推荐）</a></li>
+      </ul>
+    </li>
+    <li><a href="#-二不同场景的回滚方法">🚦 二、不同场景的回滚方法</a>
+      <ul>
+        <li><a href="#-场景-1刚-commit还没-push">✅ 场景 1：刚 commit，还没 push</a>
+          <ul>
+            <li><a href="#-回退但保留修改推荐">✔ 回退但保留修改（推荐）</a></li>
+            <li><a href="#-回退保留修改但取消-add">✔ 回退，保留修改但取消 add</a></li>
+            <li><a href="#-完全撤销危险">⚠️ 完全撤销（危险）</a></li>
+          </ul>
+        </li>
+        <li><a href="#-场景-2已经-push想修改历史">✅ 场景 2：已经 push（想修改历史）</a>
+          <ul>
+            <li><a href="#-强制回滚危险操作">⚠️ 强制回滚（危险操作）</a></li>
+          </ul>
+        </li>
+        <li><a href="#-场景-3已经-push安全做法推荐">✅ 场景 3：已经 push（安全做法，推荐）</a>
+          <ul>
+            <li><a href="#-使用-revert不改历史">✔ 使用 revert（不改历史）</a></li>
+          </ul>
+        </li>
+        <li><a href="#-场景-4回滚到指定-commit">✅ 场景 4：回滚到指定 commit</a>
+          <ul>
+            <li><a href="#-查看历史">① 查看历史</a></li>
+            <li><a href="#-回退">② 回退</a></li>
+          </ul>
+        </li>
+        <li><a href="#-场景-5只撤销某个文件">✅ 场景 5：只撤销某个文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#-三推荐使用-commit-id更安全">🎯 三、推荐使用 commit id（更安全）</a>
+      <ul>
+        <li><a href="#示例">示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#-四实战案例大文件提交错误">🚨 四、实战案例（大文件提交错误）</a>
+      <ul>
+        <li><a href="#-问题">❌ 问题</a></li>
+        <li><a href="#-正确回滚方式">✅ 正确回滚方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#-五reset-vs-revert-总结">🧠 五、reset vs revert 总结</a></li>
+    <li><a href="#-六最佳实践">⚡ 六、最佳实践</a>
+      <ul>
+        <li><a href="#-git-适合管理">✅ Git 适合管理：</a></li>
+        <li><a href="#-不适合">❌ 不适合：</a></li>
+      </ul>
+    </li>
+    <li><a href="#-七一句话总结">🧠 七、一句话总结</a></li>
+    <li><a href="#-附常用命令速查">🚀 附：常用命令速查</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="git-回滚指南已经提交的代码如何撤销">Git 回滚指南：已经提交的代码如何撤销？</h1>
+<p>在日常开发中，经常会遇到需要“回滚提交”的情况，比如：</p>
+<ul>
+<li>提交了错误代码</li>
+<li>不小心加入了大文件（如 <code>.json</code> / <code>.zip</code>）</li>
+<li>commit message 写错</li>
+<li>想恢复到某个历史版本</li>
+</ul>
+<p>本文系统总结 Git 回滚的常见场景与正确做法。</p>
+<hr>
+<h1 id="-一核心概念">🧠 一、核心概念</h1>
+<h2 id="1-什么是-head">1. 什么是 HEAD？</h2>
+<ul>
+<li><code>HEAD</code>：当前所在的提交（最新 commit）</li>
+<li><code>HEAD~1</code>：上一个提交</li>
+<li><code>HEAD~2</code>：上上个提交</li>
+</ul>
+<p>👉 示例：</p>
+<p>A —— B —— C (HEAD)</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HEAD</td>
+<td>当前提交（C）</td>
+</tr>
+<tr>
+<td>HEAD~1</td>
+<td>上一个提交（B）</td>
+</tr>
+<tr>
+<td>HEAD~2</td>
+<td>更早提交（A）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-commit-id推荐">2. commit id（推荐）</h2>
+<p>每个 commit 都有唯一标识：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git log --oneline
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">c3f9a2d fix bug
+</span></span><span class="line"><span class="cl">a8b1e4f add feature
+</span></span><span class="line"><span class="cl">92ab123 init
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 推荐优先使用 commit id，而不是 <code>HEAD~n</code></p>
+<h1 id="-二不同场景的回滚方法">🚦 二、不同场景的回滚方法</h1>
+<hr>
+<h2 id="-场景-1刚-commit还没-push">✅ 场景 1：刚 commit，还没 push</h2>
+<h3 id="-回退但保留修改推荐">✔ 回退但保留修改（推荐）</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git reset --soft HEAD~1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 效果：</p>
+<ul>
+<li>commit 被撤销</li>
+<li>修改仍保留（已 add）</li>
+</ul>
+<hr>
+<h3 id="-回退保留修改但取消-add">✔ 回退，保留修改但取消 add</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git reset --mixed HEAD~1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="-完全撤销危险">⚠️ 完全撤销（危险）</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git reset --hard HEAD~1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 所有修改直接删除！</p>
+<hr>
+<h2 id="-场景-2已经-push想修改历史">✅ 场景 2：已经 push（想修改历史）</h2>
+<h3 id="-强制回滚危险操作">⚠️ 强制回滚（危险操作）</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git reset --hard HEAD~1
+</span></span><span class="line"><span class="cl">git push origin main --force
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 特点：</p>
+<ul>
+<li>会修改远程历史</li>
+<li>可能影响他人开发</li>
+</ul>
+<p>👉 适用：</p>
+<ul>
+<li>个人项目</li>
+<li>没有协作开发</li>
+</ul>
+<hr>
+<h2 id="-场景-3已经-push安全做法推荐">✅ 场景 3：已经 push（安全做法，推荐）</h2>
+<h3 id="-使用-revert不改历史">✔ 使用 revert（不改历史）</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git revert HEAD
+</span></span><span class="line"><span class="cl">git push
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 本质：</p>
+<ul>
+<li>新建一个 commit</li>
+<li>抵消之前的修改</li>
+</ul>
+<p>👉 优点：</p>
+<ul>
+<li>安全</li>
+<li>适合团队协作</li>
+</ul>
+<hr>
+<h2 id="-场景-4回滚到指定-commit">✅ 场景 4：回滚到指定 commit</h2>
+<h3 id="-查看历史">① 查看历史</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git log --oneline
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="-回退">② 回退</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git reset --hard &lt;commit_id&gt;
+</span></span><span class="line"><span class="cl">git push --force
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="-场景-5只撤销某个文件">✅ 场景 5：只撤销某个文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git checkout HEAD -- path/to/file
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h1 id="-三推荐使用-commit-id更安全">🎯 三、推荐使用 commit id（更安全）</h1>
+<h2 id="示例">示例</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git reset --soft a8b1e4f
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>相比：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git reset --soft HEAD~1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 优势：</p>
+<ul>
+<li>更精确</li>
+<li>不会回错版本</li>
+<li>适合复杂项目</li>
+</ul>
+<hr>
+<h1 id="-四实战案例大文件提交错误">🚨 四、实战案例（大文件提交错误）</h1>
+<h2 id="-问题">❌ 问题</h2>
+<ul>
+<li>提交了 &gt;100MB 文件</li>
+<li>GitHub 拒绝 push</li>
+</ul>
+<hr>
+<h2 id="-正确回滚方式">✅ 正确回滚方式</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git reset --soft HEAD~1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>删除大文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rm -rf graph/trace/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>或：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git rm --cached -r graph/trace
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重新提交：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m &#34;remove large files&#34;
+</span></span><span class="line"><span class="cl">git push
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h1 id="-五reset-vs-revert-总结">🧠 五、reset vs revert 总结</h1>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>是否改历史</th>
+<th>是否安全</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git reset</td>
+<td>✅ 改历史</td>
+<td>❌</td>
+<td>本地修改</td>
+</tr>
+<tr>
+<td>git revert</td>
+<td>❌ 不改</td>
+<td>✅</td>
+<td>已 push</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="-六最佳实践">⚡ 六、最佳实践</h1>
+<h2 id="-git-适合管理">✅ Git 适合管理：</h2>
+<ul>
+<li>源代码</li>
+<li>配置文件</li>
+<li>小型数据</li>
+</ul>
+<h2 id="-不适合">❌ 不适合：</h2>
+<ul>
+<li>大文件（&gt;100MB）</li>
+<li>数据集（trace / logs）</li>
+<li>zip / 模型文件</li>
+</ul>
+<p>👉 建议：</p>
+<ul>
+<li>使用 <code>.gitignore</code></li>
+<li>数据放云存储（OSS / S3）</li>
+</ul>
+<hr>
+<h1 id="-七一句话总结">🧠 七、一句话总结</h1>
+<blockquote>
+<p>🔹 想“改历史” → 用 <code>git reset</code>
+🔹 想“安全回滚” → 用 <code>git revert</code>
+🔹 想“精确控制” → 用 <code>commit id</code></p>
+</blockquote>
+<hr>
+<h1 id="-附常用命令速查">🚀 附：常用命令速查</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 查看历史
+</span></span><span class="line"><span class="cl">git log --oneline
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 回退一个版本
+</span></span><span class="line"><span class="cl">git reset --soft HEAD~1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 回退到指定版本
+</span></span><span class="line"><span class="cl">git reset --hard &lt;commit_id&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 安全回滚
+</span></span><span class="line"><span class="cl">git revert HEAD
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 强制推送
+</span></span><span class="line"><span class="cl">git push --force
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Long He</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2026-03-21
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/minerupdf-%E8%BD%AC-markdown-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
+            <span class="next-text nav-default">📄MinerU：PDF 转 Markdown 使用说明</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:longhe_lh@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/longhe-lh" class="iconfont icon-github" title="github"></a>
+  <a href="http://helong0102.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2026<span class="heart"><i class="iconfont icon-heart"></i></span><span>Long He</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
