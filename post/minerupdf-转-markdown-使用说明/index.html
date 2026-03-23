@@ -49,7 +49,7 @@
 <meta itemprop="name" content="📄MinerU：PDF 转 Markdown 使用说明">
 <meta itemprop="description" content="📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），涵盖**单文件转换、批量转换以及性能优化（加"><meta itemprop="datePublished" content="2026-03-20T01:37:56+21:00" />
 <meta itemprop="dateModified" content="2026-03-20T01:37:56+22:00" />
-<meta itemprop="wordCount" content="1990">
+<meta itemprop="wordCount" content="2033">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="📄MinerU：PDF 转 Markdown 使用说明"/>
 <meta name="twitter:description" content="📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），涵盖**单文件转换、批量转换以及性能优化（加"/>
@@ -194,9 +194,9 @@
         <li><a href="#-批量处理">🚀 批量处理</a></li>
         <li><a href="#-pdf--markdown-转换脚本参考">📂 PDF → Markdown 转换脚本参考</a>
           <ul>
-            <li><a href="#step-1pdf-文件名截断">Step 1：PDF 文件名截断</a></li>
-            <li><a href="#step-2收集-markdown-和图片">Step 2：收集 Markdown 和图片</a></li>
-            <li><a href="#step3-用-pdf-补全-markdown-文件名">Step3: 用 PDF 补全 Markdown 文件名</a></li>
+            <li><a href="#step-1pdf-文件名截断rename-1ps1">Step 1：PDF 文件名截断（rename-1.ps1）</a></li>
+            <li><a href="#step-2收集-markdown-和图片collect-2ps1">Step 2：收集 Markdown 和图片（collect-2.ps1）</a></li>
+            <li><a href="#step3-用-pdf-补全-markdown-文件名rename-3ps1">Step3: 用 PDF 补全 Markdown 文件名（rename-3.ps1）</a></li>
           </ul>
         </li>
       </ul>
@@ -654,7 +654,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="-pdf--markdown-转换脚本参考">📂 PDF → Markdown 转换脚本参考</h2>
-<h3 id="step-1pdf-文件名截断">Step 1：PDF 文件名截断</h3>
+<h3 id="step-1pdf-文件名截断rename-1ps1">Step 1：PDF 文件名截断（rename-1.ps1）</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -735,7 +735,7 @@
 </span></span><span class="line"><span class="cl"><span class="nb">Write-Host</span> <span class="s2">&#34;Done&#34;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="step-2收集-markdown-和图片">Step 2：收集 Markdown 和图片</h3>
+</div><h3 id="step-2收集-markdown-和图片collect-2ps1">Step 2：收集 Markdown 和图片（collect-2.ps1）</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -836,7 +836,7 @@
 </span></span><span class="line"><span class="cl"><span class="nb">Write-Host</span> <span class="s2">&#34;Done: images and md files collected&#34;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="step3-用-pdf-补全-markdown-文件名">Step3: 用 PDF 补全 Markdown 文件名</h3>
+</div><h3 id="step3-用-pdf-补全-markdown-文件名rename-3ps1">Step3: 用 PDF 补全 Markdown 文件名（rename-3.ps1）</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
