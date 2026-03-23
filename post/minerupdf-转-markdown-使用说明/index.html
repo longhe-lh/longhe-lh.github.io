@@ -49,7 +49,7 @@
 <meta itemprop="name" content="📄MinerU：PDF 转 Markdown 使用说明">
 <meta itemprop="description" content="📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），涵盖**单文件转换、批量转换以及性能优化（加"><meta itemprop="datePublished" content="2026-03-20T01:37:56+21:00" />
 <meta itemprop="dateModified" content="2026-03-20T01:37:56+22:00" />
-<meta itemprop="wordCount" content="1335">
+<meta itemprop="wordCount" content="1990">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="📄MinerU：PDF 转 Markdown 使用说明"/>
 <meta name="twitter:description" content="📄 MinerU：PDF 转 Markdown 使用说明 本文档介绍如何使用 MinerU 将 PDF 文件转换为 Markdown（.md），涵盖**单文件转换、批量转换以及性能优化（加"/>
@@ -192,6 +192,13 @@
         <li><a href="#-高精度推荐">🚀 高精度推荐</a></li>
         <li><a href="#-远程高性能">🚀 远程高性能</a></li>
         <li><a href="#-批量处理">🚀 批量处理</a></li>
+        <li><a href="#-pdf--markdown-转换脚本参考">📂 PDF → Markdown 转换脚本参考</a>
+          <ul>
+            <li><a href="#step-1pdf-文件名截断">Step 1：PDF 文件名截断</a></li>
+            <li><a href="#step-2收集-markdown-和图片">Step 2：收集 Markdown 和图片</a></li>
+            <li><a href="#step3-用-pdf-补全-markdown-文件名">Step3: 用 PDF 补全 Markdown 文件名</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -644,6 +651,290 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mineru -p input_dir -o output_dir -d cuda
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="-pdf--markdown-转换脚本参考">📂 PDF → Markdown 转换脚本参考</h2>
+<h3 id="step-1pdf-文件名截断">Step 1：PDF 文件名截断</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$pdfDir</span> <span class="p">=</span> <span class="s2">&#34;D:\temp\pdfs&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="nv">$pdfDir</span> <span class="n">-Filter</span> <span class="s2">&#34;*.pdf&#34;</span> <span class="p">|</span> <span class="nb">ForEach-Object</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$fullName</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$name</span> <span class="p">=</span> <span class="no">[System.IO.Path]</span><span class="p">::</span><span class="n">GetFileNameWithoutExtension</span><span class="p">(</span><span class="nv">$fullName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c"># 可选：去掉特殊字符（推荐）</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$name</span> <span class="p">=</span> <span class="nv">$name</span> <span class="o">-replace</span> <span class="s2">&#34;[^a-zA-Z0-9\s]&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$words</span> <span class="p">=</span> <span class="nv">$name</span> <span class="n">-split</span> <span class="s2">&#34;\s+&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$words</span><span class="p">.</span><span class="n">Length</span> <span class="o">-ge</span> <span class="n">3</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$newBaseName</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$words</span><span class="p">[</span><span class="n">0</span><span class="p">..</span><span class="n">2</span><span class="p">]</span> <span class="n">-join</span> <span class="s2">&#34; &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$newBaseName</span> <span class="p">=</span> <span class="nv">$name</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$newName</span> <span class="p">=</span> <span class="nv">$newBaseName</span> <span class="p">+</span> <span class="s2">&#34;.pdf&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$newPath</span> <span class="p">=</span> <span class="nb">Join-Path</span> <span class="nv">$pdfDir</span> <span class="nv">$newName</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$i</span> <span class="p">=</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">((</span><span class="nb">Test-Path</span> <span class="nv">$newPath</span><span class="p">)</span> <span class="o">-and</span> <span class="p">(</span><span class="nv">$newPath</span> <span class="o">-ne</span> <span class="nv">$_</span><span class="p">.</span><span class="n">FullName</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$newName</span> <span class="p">=</span> <span class="s2">&#34;$newBaseName`_$i.pdf&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$newPath</span> <span class="p">=</span> <span class="nb">Join-Path</span> <span class="nv">$pdfDir</span> <span class="nv">$newName</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$i</span><span class="p">++</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">FullName</span> <span class="o">-ne</span> <span class="nv">$newPath</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">Rename-Item</span> <span class="n">-Path</span> <span class="nv">$_</span><span class="p">.</span><span class="n">FullName</span> <span class="n">-NewName</span> <span class="nv">$newName</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">Write-Host</span> <span class="s2">&#34;Renamed: $fullName -&gt; $newName&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">Write-Host</span> <span class="s2">&#34;Skip: $fullName&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">Write-Host</span> <span class="s2">&#34;Done&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="step-2收集-markdown-和图片">Step 2：收集 Markdown 和图片</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># 源目录</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$sourceRoot</span> <span class="p">=</span> <span class="s2">&#34;D:\temp\20260323&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># 目标目录</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$imageTarget</span> <span class="p">=</span> <span class="s2">&#34;D:\temp\images&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$mdTarget</span> <span class="p">=</span> <span class="s2">&#34;D:\temp&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># 如果目标目录不存在就创建</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(!(</span><span class="nb">Test-Path</span> <span class="nv">$imageTarget</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Path</span> <span class="nv">$imageTarget</span> <span class="p">|</span> <span class="nb">Out-Null</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># 1️⃣ 收集所有 images 文件夹里的文件</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="nv">$sourceRoot</span> <span class="n">-Recurse</span> <span class="n">-Directory</span> <span class="n">-Filter</span> <span class="s2">&#34;images&#34;</span> <span class="p">|</span> <span class="nb">ForEach-Object</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="nv">$_</span><span class="p">.</span><span class="n">FullName</span> <span class="o">-File</span> <span class="p">|</span> <span class="nb">ForEach-Object</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$dest</span> <span class="p">=</span> <span class="nb">Join-Path</span> <span class="nv">$imageTarget</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c"># 避免重名覆盖（自动加编号）</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$i</span> <span class="p">=</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="nv">$dest</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$name</span> <span class="p">=</span> <span class="no">[System.IO.Path]</span><span class="p">::</span><span class="n">GetFileNameWithoutExtension</span><span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$ext</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Extension</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$dest</span> <span class="p">=</span> <span class="nb">Join-Path</span> <span class="nv">$imageTarget</span> <span class="s2">&#34;$name`_$i$ext&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$i</span><span class="p">++</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nb">Copy-Item</span> <span class="nv">$_</span><span class="p">.</span><span class="n">FullName</span> <span class="n">-Destination</span> <span class="nv">$dest</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># 2️⃣ 收集所有 .md 文件</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="nv">$sourceRoot</span> <span class="n">-Recurse</span> <span class="n">-Filter</span> <span class="s2">&#34;*.md&#34;</span> <span class="o">-File</span> <span class="p">|</span> <span class="nb">ForEach-Object</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$dest</span> <span class="p">=</span> <span class="nb">Join-Path</span> <span class="nv">$mdTarget</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c"># 避免重名覆盖</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$i</span> <span class="p">=</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="nv">$dest</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$name</span> <span class="p">=</span> <span class="no">[System.IO.Path]</span><span class="p">::</span><span class="n">GetFileNameWithoutExtension</span><span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$ext</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Extension</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$dest</span> <span class="p">=</span> <span class="nb">Join-Path</span> <span class="nv">$mdTarget</span> <span class="s2">&#34;$name`_$i$ext&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$i</span><span class="p">++</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">Copy-Item</span> <span class="nv">$_</span><span class="p">.</span><span class="n">FullName</span> <span class="n">-Destination</span> <span class="nv">$dest</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">Write-Host</span> <span class="s2">&#34;Done: images and md files collected&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="step3-用-pdf-补全-markdown-文件名">Step3: 用 PDF 补全 Markdown 文件名</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># ===== 配置路径 =====</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$pdfDir</span> <span class="p">=</span> <span class="s2">&#34;D:\temp\pdfs&#34;</span>          <span class="c"># 原始 PDF 文件夹</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$mdDir</span>  <span class="p">=</span> <span class="s2">&#34;D:\temp\markdown&#34;</span>      <span class="c"># 转换后的 MD 文件夹</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># ===== 获取 PDF 文件名映射 =====</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$pdfFiles</span> <span class="p">=</span> <span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="nv">$pdfDir</span> <span class="n">-Filter</span> <span class="s2">&#34;*.pdf&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># 构建：前三个词 -&gt; 完整文件名 的映射</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$map</span> <span class="p">=</span> <span class="p">@{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">foreach</span> <span class="p">(</span><span class="nv">$pdf</span> <span class="k">in</span> <span class="nv">$pdfFiles</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$name</span> <span class="p">=</span> <span class="no">[System.IO.Path]</span><span class="p">::</span><span class="n">GetFileNameWithoutExtension</span><span class="p">(</span><span class="nv">$pdf</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c"># 拆分单词（按空格）</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$words</span> <span class="p">=</span> <span class="nv">$name</span> <span class="n">-split</span> <span class="s2">&#34;\s+&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$words</span><span class="p">.</span><span class="n">Length</span> <span class="o">-ge</span> <span class="n">3</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$key</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$words</span><span class="p">[</span><span class="n">0</span><span class="p">..</span><span class="n">2</span><span class="p">]</span> <span class="n">-join</span> <span class="s2">&#34; &#34;</span><span class="p">).</span><span class="n">ToLower</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$map</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="p">=</span> <span class="nv">$name</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># ===== 处理 MD 文件 =====</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$mdFiles</span> <span class="p">=</span> <span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="nv">$mdDir</span> <span class="n">-Filter</span> <span class="s2">&#34;*.md&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">foreach</span> <span class="p">(</span><span class="nv">$md</span> <span class="k">in</span> <span class="nv">$mdFiles</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$mdName</span> <span class="p">=</span> <span class="no">[System.IO.Path]</span><span class="p">::</span><span class="n">GetFileNameWithoutExtension</span><span class="p">(</span><span class="nv">$md</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$key</span> <span class="p">=</span> <span class="nv">$mdName</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$map</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="nv">$key</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$newName</span> <span class="p">=</span> <span class="nv">$map</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="p">+</span> <span class="s2">&#34;.md&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$newPath</span> <span class="p">=</span> <span class="nb">Join-Path</span> <span class="nv">$mdDir</span> <span class="nv">$newName</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c"># 避免覆盖</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!(</span><span class="nb">Test-Path</span> <span class="nv">$newPath</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">Rename-Item</span> <span class="n">-Path</span> <span class="nv">$md</span><span class="p">.</span><span class="n">FullName</span> <span class="n">-NewName</span> <span class="nv">$newName</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">Write-Host</span> <span class="s2">&#34;Renamed: </span><span class="p">$(</span><span class="nv">$md</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span><span class="s2"> -&gt; $newName&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">Write-Host</span> <span class="s2">&#34;Skip (exists): $newName&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">Write-Host</span> <span class="s2">&#34;No match: </span><span class="p">$(</span><span class="nv">$md</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">Write-Host</span> <span class="s2">&#34;Done&#34;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div>
